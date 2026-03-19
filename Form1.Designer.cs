@@ -76,6 +76,7 @@
             butzapis.TabIndex = 3;
             butzapis.Text = "Zapis do .csv";
             butzapis.UseVisualStyleBackColor = true;
+            butzapis.Click += butzapis_Click;
             // 
             // butodcz
             // 
@@ -85,6 +86,7 @@
             butodcz.TabIndex = 4;
             butodcz.Text = "Odczyt z .csv";
             butodcz.UseVisualStyleBackColor = true;
+            butodcz.Click += butodcz_Click;
             // 
             // Form1
             // 

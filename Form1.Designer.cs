@@ -33,6 +33,8 @@
             butus = new Button();
             butzapis = new Button();
             butodcz = new Button();
+            button1 = new Button();
+            btnZapisJSON = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -70,7 +72,7 @@
             // 
             // butzapis
             // 
-            butzapis.Location = new Point(177, 379);
+            butzapis.Location = new Point(193, 379);
             butzapis.Name = "butzapis";
             butzapis.Size = new Size(111, 29);
             butzapis.TabIndex = 3;
@@ -80,7 +82,7 @@
             // 
             // butodcz
             // 
-            butodcz.Location = new Point(320, 379);
+            butodcz.Location = new Point(336, 379);
             butodcz.Name = "butodcz";
             butodcz.Size = new Size(111, 29);
             butodcz.TabIndex = 4;
@@ -88,11 +90,32 @@
             butodcz.UseVisualStyleBackColor = true;
             butodcz.Click += butodcz_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 5;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // btnZapisJSON
+            // 
+            btnZapisJSON.Location = new Point(48, 379);
+            btnZapisJSON.Name = "btnZapisJSON";
+            btnZapisJSON.Size = new Size(116, 29);
+            btnZapisJSON.TabIndex = 6;
+            btnZapisJSON.Text = "Zapis do JSON";
+            btnZapisJSON.UseVisualStyleBackColor = true;
+            btnZapisJSON.Click += btnZapisJSON_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnZapisJSON);
+            Controls.Add(button1);
             Controls.Add(butodcz);
             Controls.Add(butzapis);
             Controls.Add(butus);
@@ -112,5 +135,7 @@
         private Button butus;
         private Button butzapis;
         private Button butodcz;
+        private Button button1;
+        private Button btnZapisJSON;
     }
 }

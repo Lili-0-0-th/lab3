@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "1",
+    "Imie": "Ala",
+    "Nazwisko": "pom",
+    "Wiek": "21",
+    "Stanowisko": "Kierownik projektu"
+  },
+  {
+    "ID": "2",
+    "Imie": "pawel",
+    "Nazwisko": "lom",
+    "Wiek": "25",
+    "Stanowisko": "Senior"
+  }
+]

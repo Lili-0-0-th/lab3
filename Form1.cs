@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 
 
@@ -106,9 +107,9 @@ namespace lab3
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK && openFileDialog1.FileName != "")
             {
-                
+
                 dataGridView1.Rows.Clear();
-                nextId = 1; 
+                nextId = 1;
                 string[] lines = File.ReadAllLines(openFileDialog1.FileName);
 
                 for (int i = 1; i < lines.Length; i++)
@@ -128,6 +129,41 @@ namespace lab3
                     }
                 }
                 MessageBox.Show("Dane zostały wczytane!", "Sukces");
+            }
+        }
+
+        private void btnZapisJSON_Click(object sender, EventArgs e)
+        {
+            List<Osoba> listaOsob = new List<Osoba>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    Osoba nowaOsoba = new Osoba(
+                        row.Cells[0].Value?.ToString() ?? "",
+                        row.Cells[1].Value?.ToString() ?? "",
+                        row.Cells[2].Value?.ToString() ?? "",
+                        row.Cells[3].Value?.ToString() ?? "",
+                        row.Cells[4].Value?.ToString() ?? ""
+                    );
+                    listaOsob.Add(nowaOsoba);
+                }
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki JSON (*.json)|*.json";
+            saveFileDialog.Title = "Zapisz dane jako JSON";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                var options = new JsonSerializerOptions { WriteIndented = true };
+
+                string jsonString = JsonSerializer.Serialize(listaOsob, options); 
+
+                File.WriteAllText(saveFileDialog.FileName, jsonString); 
+
+                MessageBox.Show("Dane zostały zserializowane do pliku JSON!", "Sukces");
             }
         }
     }

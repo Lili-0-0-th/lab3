@@ -10,7 +10,8 @@ namespace lab3
         public string ID { get; set; }
         public string Imie { get; set; }
         public string Nazwisko { get; set; }
-        public string Wiek { get; set; }
+
+        public string Wiek { get; set; }    
         public string Stanowisko { get; set; }
 
         public Osoba() { }

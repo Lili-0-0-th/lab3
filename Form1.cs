@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Text;
-using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using System.Xml.Serialization;
 using System.Text.Json;
 
 
@@ -131,6 +132,46 @@ namespace lab3
                 MessageBox.Show("Dane zostały wczytane!", "Sukces");
             }
         }
+
+        private void btnZapisXML_Click(object sender, EventArgs e)
+        {
+            List<Osoba> listaOsob = new List<Osoba>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    Osoba osoba = new Osoba(
+                    
+                        row.Cells[0].Value?.ToString(),
+                        row.Cells[1].Value?.ToString() ?? "", 
+                        row.Cells[2].Value?.ToString() ?? "", 
+                        row.Cells[3].Value?.ToString() ?? "", 
+                        row.Cells[4].Value?.ToString() ?? ""
+                    );
+                    listaOsob.Add(osoba);
+                }
+            }
+
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki XML (*.xml)|*.xml";
+            saveFileDialog.Title = "Zapisz dane jako XML";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Osoba>));
+
+                using (TextWriter writer = new StreamWriter(saveFileDialog.FileName))
+                {
+                    serializer.Serialize(writer, listaOsob); 
+                }
+
+                MessageBox.Show("Dane zostały zserializowane do pliku XML!", "Sukces");
+            }
+        }
+    }
+    
+}
 
         private void btnZapisJSON_Click(object sender, EventArgs e)
         {

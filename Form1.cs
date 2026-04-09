@@ -141,11 +141,11 @@ namespace lab3
                 if (!row.IsNewRow)
                 {
                     Osoba osoba = new Osoba(
-                    
+
                         row.Cells[0].Value?.ToString(),
-                        row.Cells[1].Value?.ToString() ?? "", 
-                        row.Cells[2].Value?.ToString() ?? "", 
-                        row.Cells[3].Value?.ToString() ?? "", 
+                        row.Cells[1].Value?.ToString() ?? "",
+                        row.Cells[2].Value?.ToString() ?? "",
+                        row.Cells[3].Value?.ToString() ?? "",
                         row.Cells[4].Value?.ToString() ?? ""
                     );
                     listaOsob.Add(osoba);
@@ -158,20 +158,17 @@ namespace lab3
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                
+
                 XmlSerializer serializer = new XmlSerializer(typeof(List<Osoba>));
 
                 using (TextWriter writer = new StreamWriter(saveFileDialog.FileName))
                 {
-                    serializer.Serialize(writer, listaOsob); 
+                    serializer.Serialize(writer, listaOsob);
                 }
 
                 MessageBox.Show("Dane zostały zserializowane do pliku XML!", "Sukces");
             }
         }
-    }
-    
-}
 
         private void btnZapisJSON_Click(object sender, EventArgs e)
         {
@@ -197,15 +194,20 @@ namespace lab3
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                
+
                 var options = new JsonSerializerOptions { WriteIndented = true };
 
-                string jsonString = JsonSerializer.Serialize(listaOsob, options); 
+                string jsonString = JsonSerializer.Serialize(listaOsob, options);
 
-                File.WriteAllText(saveFileDialog.FileName, jsonString); 
+                File.WriteAllText(saveFileDialog.FileName, jsonString);
 
                 MessageBox.Show("Dane zostały zserializowane do pliku JSON!", "Sukces");
             }
         }
     }
+
 }
+
+
+
+
